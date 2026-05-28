@@ -14,7 +14,7 @@ Developed as a modern Next.js 14 App Router application with React 18, TypeScrip
 - **Collapsible Notes & Disclaimers Accordion**: Includes critical contextual insights and warnings matching Figma specifications.
 - **Premium Light/Dark/System Theme Support**: Clean theme transitions using next-themes and a segmented control pill.
 - **In-Memory Rate Limiting**: Secures mock API endpoints using a continuously refilled Token Bucket rate limiter (max 30 requests/minute) per client IP.
-- **Hardened Security Headers**: Complete Content Security Policy (CSP), clickjacking defense, type sniffing protection, and referrer configuration in `next.config.mjs`.
+
 
 ---
 
@@ -58,13 +58,13 @@ Make sure you have Node.js (v18.x or later) and npm installed.
 *Note: Visual interfaces can be previewed locally using the development server. Dark mode, light mode, and system settings adapt dynamically.*
 
 ### Desktop Layout (Light Theme)
-[Desktop Light Mode Interface Placeholder]
+![alt text](image.png)
 
 ### Desktop Layout (Dark Theme)
-[Desktop Dark Mode Interface Placeholder]
+![alt text](image-1.png)
 
 ### Mobile Layout (Responsive)
-[Mobile Responsive Dashboard Flow Placeholder]
+![alt text](image-2.png)![alt text](image-3.png)
 
 ---
 
