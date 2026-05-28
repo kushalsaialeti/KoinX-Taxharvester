@@ -88,19 +88,19 @@ function HoldingRow({
       }`}
     >
       {/* 1. Checkbox Column (sticky on mobile) */}
-      <td className={`p-4 sticky left-0 z-10 transition-colors duration-200 ${
+      <td className={`p-2 sm:p-4 sticky left-0 z-10 transition-colors duration-200 ${
         isSelected ? "bg-blue-50/70 dark:bg-[#0c1630]" : "bg-white dark:bg-[#0b0f19]"
       }`}>
         <CustomCheckbox checked={isSelected} />
       </td>
 
       {/* 2. Asset Column (sticky on mobile, right next to checkbox) */}
-      <td className={`p-4 sticky left-[48px] z-10 transition-colors duration-200 ${
+      <td className={`p-2 sm:p-4 sticky left-[40px] sm:left-[48px] z-10 transition-colors duration-200 ${
         isSelected ? "bg-blue-50/70 dark:bg-[#0c1630]" : "bg-white dark:bg-[#0b0f19]"
       }`}>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {imgError || !holding.logo ? (
-            <div className="w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs uppercase shrink-0 shadow-sm">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-[10px] sm:text-xs uppercase shrink-0 shadow-sm">
               {holding.coin.slice(0, 2)}
             </div>
           ) : (
@@ -110,14 +110,14 @@ function HoldingRow({
               width={28}
               height={28}
               onError={() => setImgError(true)}
-              className="w-7 h-7 rounded-full object-contain shrink-0 bg-slate-50 dark:bg-slate-800 p-0.5 shadow-sm"
+              className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-contain shrink-0 bg-slate-50 dark:bg-slate-800 p-0.5 shadow-sm"
             />
           )}
           <div className="flex flex-col">
-            <span className="font-bold text-slate-800 dark:text-slate-100 text-sm tracking-tight">
+            <span className="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm tracking-tight">
               {holding.coin}
             </span>
-            <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium truncate max-w-[130px] sm:max-w-none">
+            <span className="text-[9px] sm:text-[11px] text-slate-400 dark:text-slate-500 font-medium truncate max-w-[80px] sm:max-w-[130px] md:max-w-none">
               {holding.coinName}
             </span>
           </div>
@@ -125,27 +125,27 @@ function HoldingRow({
       </td>
 
       {/* 3. Holdings / Avg Buy Price */}
-      <td className="p-4">
+      <td className="p-2 sm:p-4">
         <div className="flex flex-col">
-          <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm">
+          <span className="font-semibold text-slate-800 dark:text-slate-200 text-xs sm:text-sm">
             {formatQuantity(holding.totalHolding)} {holding.coin}
           </span>
-          <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">
+          <span className="text-[9px] sm:text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">
             Avg: {formatCurrency(holding.averageBuyPrice)}
           </span>
         </div>
       </td>
 
       {/* 4. Current Price */}
-      <td className="p-4 font-semibold text-slate-800 dark:text-slate-200 text-sm">
+      <td className="p-2 sm:p-4 font-semibold text-slate-800 dark:text-slate-200 text-xs sm:text-sm">
         {formatCurrency(holding.currentPrice)}
       </td>
 
       {/* 5. Short-Term Gain */}
-      <td className="p-4">
+      <td className="p-2 sm:p-4">
         <div className="flex flex-col">
           <span
-            className={`font-semibold text-sm flex items-center gap-1 ${
+            className={`font-semibold text-xs sm:text-sm flex items-center gap-1 ${
               holding.stcg.gain > 0
                 ? "text-emerald-600 dark:text-emerald-400"
                 : holding.stcg.gain < 0
@@ -155,24 +155,24 @@ function HoldingRow({
           >
             {holding.stcg.gain !== 0 && (
               holding.stcg.gain > 0 ? (
-                <TrendingUp className="w-3.5 h-3.5 stroke-[2.5]" />
+                <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
               ) : (
-                <TrendingDown className="w-3.5 h-3.5 stroke-[2.5]" />
+                <TrendingDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
               )
             )}
             {formatCurrency(holding.stcg.gain)}
           </span>
-          <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">
+          <span className="text-[8px] sm:text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">
             Bal: {formatQuantity(holding.stcg.balance)}
           </span>
         </div>
       </td>
 
       {/* 6. Long-Term Gain */}
-      <td className="p-4">
+      <td className="p-2 sm:p-4">
         <div className="flex flex-col">
           <span
-            className={`font-semibold text-sm flex items-center gap-1 ${
+            className={`font-semibold text-xs sm:text-sm flex items-center gap-1 ${
               holding.ltcg.gain > 0
                 ? "text-emerald-600 dark:text-emerald-400"
                 : holding.ltcg.gain < 0
@@ -182,23 +182,23 @@ function HoldingRow({
           >
             {holding.ltcg.gain !== 0 && (
               holding.ltcg.gain > 0 ? (
-                <TrendingUp className="w-3.5 h-3.5 stroke-[2.5]" />
+                <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
               ) : (
-                <TrendingDown className="w-3.5 h-3.5 stroke-[2.5]" />
+                <TrendingDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
               )
             )}
             {formatCurrency(holding.ltcg.gain)}
           </span>
-          <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">
+          <span className="text-[8px] sm:text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">
             Bal: {formatQuantity(holding.ltcg.balance)}
           </span>
         </div>
       </td>
 
-      {/* 7. Amount to Sell */}
-      <td className="p-4 text-right">
+      {/* 7. Amount to Sell - Hidden on mobile, visible on larger screens */}
+      <td className="p-2 sm:p-4 text-right hidden md:table-cell">
         <span
-          className={`text-sm font-bold ${
+          className={`text-xs sm:text-sm font-bold ${
             isSelected
               ? "text-blue-600 dark:text-blue-400 bg-blue-100/50 dark:bg-blue-900/30 px-2.5 py-1 rounded-lg"
               : "text-slate-400 dark:text-slate-500"
@@ -240,11 +240,11 @@ export default function HoldingsTable({
       </div>
 
       <div className="overflow-x-auto relative w-full scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800">
-        <table className="w-full text-left border-collapse min-w-[800px]">
+        <table className="w-full text-left border-collapse min-w-[600px] sm:min-w-[800px]">
           <thead>
-            <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-[#090c15] text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-[#090c15] text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
               {/* Sticky Checkbox header */}
-              <th className="p-4 sticky left-0 z-10 bg-slate-50 dark:bg-[#090c15] w-[48px]">
+              <th className="p-2 sm:p-4 sticky left-0 z-10 bg-slate-50 dark:bg-[#090c15] w-[40px] sm:w-[48px]">
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
@@ -259,14 +259,14 @@ export default function HoldingsTable({
                 </div>
               </th>
               {/* Sticky Asset header */}
-              <th className="p-4 sticky left-[48px] z-10 bg-slate-50 dark:bg-[#090c15]">
+              <th className="p-2 sm:p-4 sticky left-[40px] sm:left-[48px] z-10 bg-slate-50 dark:bg-[#090c15]">
                 Asset
               </th>
-              <th className="p-4">Holdings / Avg Buy Price</th>
-              <th className="p-4">Current Price</th>
-              <th className="p-4">Short-Term Gain</th>
-              <th className="p-4">Long-Term Gain</th>
-              <th className="p-4 text-right">Amount to Sell</th>
+              <th className="p-2 sm:p-4">Holdings / Avg</th>
+              <th className="p-2 sm:p-4">Price</th>
+              <th className="p-2 sm:p-4">ST Gain</th>
+              <th className="p-2 sm:p-4">LT Gain</th>
+              <th className="p-2 sm:p-4 text-right hidden md:table-cell">Amount to Sell</th>
             </tr>
           </thead>
           
@@ -281,7 +281,7 @@ export default function HoldingsTable({
               },
             }}
           >
-            {sortedHoldings.map((h, index) => {
+            {sortedHoldings.map((h) => {
               const id = `${h.coin}-${h.coinName}`;
               return (
                 <HoldingRow
@@ -289,7 +289,6 @@ export default function HoldingsTable({
                   holding={h}
                   isSelected={selectedIds.has(id)}
                   onToggle={() => onToggle(id)}
-                  index={index}
                 />
               );
             })}
